@@ -12138,8 +12138,8 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong><br>
 对于随机抽样的3个数据，结合数据集的统计描述，比较容易发现，数据点3的Fresh是Fresh特征中的最大值，同时其他货物也都在其特征数的74%以上，这也说明数据点3代表着其购进的货物更新很快，需要的量特别大，因而判断会是餐饮行业；<br>
-而对于数据点2，则发现其Fresh与Frozen都接近极小值，但在Milk,grocery,Detergents_Paper这3中货物的用量都远大于其特征的75%，对照所给的行业类型，旅馆方面则需要长期的清洁工作，日常的被褥杂货也常需要更换，很多旅馆也会提供早餐，牛奶的供应量也需要的比较大，这正好符合数据点2的特征；<br>
-相较数据点1，其购入的货物相对较为平均，虽Grocery与Delicatessen的量高于其特征量的75%，但其他购入量则没有那么突出，因此判断为零售商。</p>
+而对于数据点2，则发现其Fresh与Frozen都接近极小值，但在Milk,grocery,Detergents_Paper这3中货物的用量都远大于其特征的75%，对照所给的行业类型，零售超商的货物有很多已杂货为主，加上各类清洁用品，日常的牛奶饮料也会有售，超商的食品多会有一定的保质期，生鲜冰冻类食品可能较少，这正好符合数据点2的特征；<br>
+相较数据点1，其购入的货物相对较为平均，虽Grocery与Delicatessen的量高于其特征量的75%，但其他购入量则没有那么突出，更新速度并不快，结合咖啡馆的营业特性，所售咖啡类型也会加入牛奶的咖啡，各式生鲜小食也常被摆上桌，但量都相对较小，因此判断数据点1属咖啡馆。</p>
 
 </div>
 </div>
@@ -13506,10 +13506,10 @@ Grocery与Detergents_Paper呈一定的正相关性；<br>
 <p><strong>回答:</strong><br>
 7.257374081001339;<br>
 9.560136533912093;<br>
-component-1: 可能代表零售商，Detergents_Paper,grocery,milk权重绝对值较大<br>
-component-2: 可能代表餐馆，Fresh,Frozen,Delicatessen的权重绝对值较大<br>
-component-3: 可能代表旅馆，Fresh与Delicatessen权重绝对值较大<br>
-component-4: 可能代表咖啡馆，Frozen,Delicatessen权重绝对值较大</p>
+component-1: 可能代表零售商，Detergents_Paper,grocery,milk权重绝对值较大，且都为负，这也表明在Detergents_Paper的变化的同时，其他两项也会有相应的变化，但在增加的同时，在主成分上的得分越低，零售业对这三种商品在日常的销售中都是较少的<br>
+component-2: 可能代表旅馆，Fresh,Frozen,Delicatessen的权重绝对值较大，且都为负，意味着行业对于这三项的需求度不高，旅馆方面不需要现做现卖，因此可判断为旅馆<br>
+component-3: 可能代表餐馆，Fresh与Delicatessen权重绝对值较大，且互为负正，意味着增加Fresh就需要减小Delicatessen，餐馆如果自己做的话就需要多的Fresh，直接打包的话可使用Delicatessen。<br>
+component-4: 可能代表咖啡馆，Frozen,Delicatessen权重绝对值较大，且Frozen为正大于负的Delicatessen，咖啡馆的食物多为冷藏式的点心较多</p>
 
 </div>
 </div>
@@ -14100,8 +14100,8 @@ n_components=2,3,5,6,7,9<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong><br>
-segment 0：零售店，其中Grocery，milk，Detergents_Paper均超过了所属特征的Q3值，购入量大于特征下的75%客户数，而符合零售店的货物流动特点
-segment 1: 咖啡馆，只有Fresh数超过了Q2值，其它特征值均在Q2值以下，说明其购入量较少，售出的货物较少，符合咖啡馆的特点</p>
+segment 0：结合问题1的预测，其中Grocery，milk，Detergents_Paper均超过了所属特征的Q3值，占大部分，购入量大于特征下的75%客户数，但其他货物购入数相对较少，因此判断为零售商；<br>
+segment 1: 只有Fresh数超过了Q2值，其它特征值均在Q2值以下，说明其购入量较少，售出的货物较少，货物更新较慢，判断为咖啡馆。</p>
 
 </div>
 </div>
@@ -14157,7 +14157,7 @@ Sample point 2 predicted to be in Cluster 0
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong><br>
 Cluster 0;<br>
-不相符（是不是由于聚类只有2个的原因？）</p>
+不相符，实际的行业之间业务差别还是会比较大的，仅靠购入的结果对客户类别进行二分类，这一判断显然也是不符合实际的。</p>
 
 </div>
 </div>
